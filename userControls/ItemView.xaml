@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="dot_shop.ItemView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             
+             xmlns:local="clr-namespace:dot_shop"
+             mc:Ignorable="d"
+             Background="White" MinWidth="400" MinHeight="70" d:DesignWidth="355.13">
+    <materialDesign:Card>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <ProgressBar x:Name="progressBar" Style="{StaticResource MaterialDesignCircularProgressBar}" Margin="2,2,2,2" Value="0" IsIndeterminate="True" />
+            <Image x:Name="imgItemPrev"  MinWidth="50" MinHeight="50" Panel.ZIndex="1"  Margin="2,2,2,2"/>
+            <Grid x:Name="gridText" Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label x:Name="lblItemName" Content="Nazwa Przedmiotu" FontWeight="Bold" FontSize="18" Padding="5,2,5,5"/>
+                <WrapPanel x:Name="wrapP" Grid.Row="1" Orientation="Horizontal" />
+            </Grid>
+        </Grid>
+    </materialDesign:Card>
+</UserControl>

@@ -1,0 +1,188 @@
+﻿<Window x:Name="window" x:Class="dot_shop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dot_shop"
+
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Sklep dot-shop" Height="450" Width="800" MinWidth="550" MinHeight="350"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" SizeChanged="window_SizeChanged"
+         WindowStyle="None"
+        ResizeMode="CanResize" AllowsTransparency="True"
+        >
+    <WindowChrome.WindowChrome>
+        <WindowChrome     
+        CaptionHeight="0"  
+        CornerRadius ="0"
+        ResizeBorderThickness="6"         
+        GlassFrameThickness="0" NonClientFrameEdges="None">
+        </WindowChrome>
+    </WindowChrome.WindowChrome>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TabControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.GroupBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DialogHost.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <materialDesign:ColorZone
+                    Mode="PrimaryDark" x:Name="gridTopBar"  MouseDown="gridTopBar_MouseDown"  VerticalAlignment="Stretch" MouseDoubleClick="gridTopBar_MouseDoubleClick">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="34"/>
+                        <ColumnDefinition Width="42"/>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PopupBox StaysOpen="False" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        <Grid Width="75">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                <Button Margin="10,10,10,10" x:Name="btnRestore" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="Przywrócenie domyślnych przedmiotów." Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}" Click="btnRestore_Click">
+                                    <materialDesign:PackIcon Kind="FileRestoreOutline" Height="24" Width="24" />
+                                </Button>
+                                <Button Margin="10,10,10,10" x:Name="btnDelete" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="Usuń przedmioty." Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}" Click="btnDelete_Click">
+                                    <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
+                                </Button>
+                                <Button Margin="10,10,10,10" x:Name="btnLoad" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="Pobierz przedmioty" Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}" Click="btnLoad_Click">
+                                    <materialDesign:PackIcon Kind="FileDownload" Height="24" Width="24" />
+                                </Button>
+                                <Button Margin="10,10,10,10" x:Name="btnSave" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" ToolTip="Zapisz przedmioty" Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}" Click="btnSave_Click">
+                                    <materialDesign:PackIcon Kind="FileUpload" Height="24" Width="24" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:PopupBox>
+                    <Image Source="/img/logo.png"  Margin="15,5,0,5"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,8,8,8" ToolTip="Minimalizuj" Width="12" Height="12"  Cursor="Hand" Click="ButtonMinimalize_Click" Background="#8BC34A" BorderBrush="#8BC34A">
+                        <materialDesign:PackIcon Kind="WindowMinimize"  Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,8,8,8" ToolTip="Pełen ekran" Width="16" Height="16" Cursor="Hand" Click="ButtonFull_Click" Background="#FFC107" BorderBrush="#FFC107">
+                        <materialDesign:PackIcon Kind="DockWindow" Height="14" Width="14" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,8,16,8" ToolTip="Zamknij" Width="18" Height="18"  Cursor="Hand" Click="ButtonClose_Click" Background="#f44336" BorderBrush="#f44336">
+                        <materialDesign:PackIcon Kind="WindowClose" Height="17" Width="17" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Button>
+                </Grid>
+            </materialDesign:ColorZone>
+        </Grid>
+        <Grid Grid.Row="1">
+            <materialDesign:DialogHost>
+                <materialDesign:DialogHost.DialogContent   >
+                    <Grid  >
+                        <Frame NavigationUIVisibility="Hidden"  Name="dialogHostCreateItem" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
+                        </Frame>
+                    </Grid>
+                </materialDesign:DialogHost.DialogContent>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="1"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Background="#FF838383">
+
+                    </Grid>
+                    <Grid Grid.Column="3" Background="#FF838383">
+
+                    </Grid>
+                    <Grid Grid.Row="2" Background="#FF838383">
+
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="1" Background="#FF838383" >
+
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="3" Background="#FF838383">
+
+                    </Grid>
+                    <Grid x:Name="Main" Grid.Row="0" Grid.Column="1" Margin="7,7,7,7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Margin="2,2,2,2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnAddItem" Style="{StaticResource MaterialDesignFloatingActionAccentButton}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" ToolTip="Dodaj przedmiot" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,16,16" Click="btnAddItem_Click" Cursor="Hand" Panel.ZIndex="5" >
+                                <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
+                            </Button>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Margin="0,0,0,5" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Name="lblItemViewedCount" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                    <Button x:Name="btnSort" Grid.Column="2" Style="{StaticResource MaterialDesignOutlinedButton}" ToolTip="Sortuj" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Cursor="Hand" Click="btnSort_Click" >
+                                        <materialDesign:PackIcon Name="iconSort" Kind="Sort" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Button>
+                                </Grid>
+                                <ScrollViewer Grid.Row="1" x:Name="scrollViewer" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="scrollViewer_PreviewMouseWheel" PreviewMouseLeftButtonDown="scrollViewer_PreviewMouseLeftButtonDown" PreviewMouseMove="scrollViewer_PreviewMouseMove" PreviewMouseLeftButtonUp="scrollViewer_PreviewMouseLeftButtonUp" ScrollChanged="scrollViewer_ScrollChanged" >
+                                    <StackPanel x:Name="stackPList" Grid.Column="0"/>
+                                </ScrollViewer>
+                            </Grid>
+                            
+                        </Grid>
+                        <materialDesign:Card  Grid.Column="1" Margin="2,2,2,2" MinWidth="100">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="lblCategories" Content="Kategorie"/>
+                                    <ScrollViewer x:Name="scroll" VerticalScrollBarVisibility="Hidden"  Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" Margin="0,0,0,0" >
+                                        <StackPanel x:Name="sPanelViewCategories" VerticalAlignment="Top"   Margin="5,10,10,5" HorizontalAlignment="Left">
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </Grid>
+                                <Grid Grid.Row="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <!--
+                                    <Button x:Name="btnLoadXml" Content="Wczytaj xml"  HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Row="0" Click="btnLoadXml_Click"/>
+                                    <Button x:Name="btnSaveXml" Content="Zapisz xml"  HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Row="1" Click="btnSaveXml_Click"/>
+                                    -->
+                                </Grid>
+                            </Grid>
+                        </materialDesign:Card>
+                    </Grid>
+                </Grid>
+            </materialDesign:DialogHost>
+        </Grid>
+    </Grid>
+</Window>
