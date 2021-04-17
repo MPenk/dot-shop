@@ -110,7 +110,7 @@ namespace dot_shop
             this.name = name;
             this.imgUrl = imgUrl;
             Guid photoID = System.Guid.NewGuid();
-            this.fullFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\dot-Kom\\img\\" + photoID.ToString() + ".jpg";
+            this.fullFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\dot-shop\\img\\" + photoID.ToString() + ".jpg";
             Item.items.Add(this);
             this.ItemCategory = ItemCategory.addItem(category, this);
         }

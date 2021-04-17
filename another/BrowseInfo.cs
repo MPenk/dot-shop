@@ -49,7 +49,7 @@ namespace dot_shop
             this.name = name;
             this.imgUrl = imgUrl;
             Guid photoID = System.Guid.NewGuid();
-            this.fullFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\dot-Kom\\img\\" + photoID.ToString() + ".jpg";
+            this.fullFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\dot-shop\\img\\" + photoID.ToString() + ".jpg";
         }
         public BrowseInfo() { }
 
@@ -88,7 +88,7 @@ namespace dot_shop
 
         static private async Task<BitmapImage> SaveImageAsync(BitmapImage bitmapImage, BitmapImage bitmapDownload, string fileFullPath)
         {
-            Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "dot-Kom\\img"));
+            Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "dot-shop\\img"));
             await using (var filestream = new FileStream(fileFullPath, FileMode.Create))
             {
                 JpegBitmapEncoder encoder = new JpegBitmapEncoder();

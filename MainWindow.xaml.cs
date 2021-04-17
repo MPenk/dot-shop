@@ -47,7 +47,7 @@ namespace dot_shop
         /// <summary>
         /// Ścieżka do pliku zapisu danych.
         /// </summary>
-        string fullPathXML = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\dot-Kom";
+        string fullPathXML = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\dot-shop";
 
         /// <summary>
         /// Randomizer.
